@@ -16,7 +16,7 @@ RUN dnf update -y && \
 WORKDIR /app
 
 # Install Hermes Agent via PyPI
-RUN pip install --no-cache-dir hermes-agent
+RUN pip install --no-cache-dir 'hermes-agent[web]'
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod 0755 /usr/local/bin/entrypoint.sh
