@@ -11,7 +11,6 @@ Git:
 ```sh
 kubectl -n agents create secret generic hermes-dashboard-auth \
 	--from-literal=username=admin \
-	--from-literal=password='<choose-a-strong-password>' \
 	--from-literal=session-secret='<at-least-32-random-bytes>'
 ```
 
