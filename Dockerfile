@@ -1,8 +1,17 @@
 FROM nousresearch/hermes-agent:v0.21.6
 
+RUN apt-get update && \
+	apt-get install -y --no-install-recommends \
+		build-essential \
+		ripgrep \
+		git \
+		gh \
+		curl && \
+	rm -rf /var/lib/apt/lists/*
+
 ENV OPENAI_BASE_URL=https://olla.ergoshear.dev/olla/openai/v1 \
 	OPENAI_API_KEY=olla \
-	OLLA_MODEL=llama3
+	OLLA_MODEL=/models/gpt-oss-20b-MXFP4.gguf
 
 COPY --chmod=0755 configure-olla.sh /etc/cont-init.d/018-olla-config
 RUN sed -i 's/\r$//' /etc/cont-init.d/018-olla-config

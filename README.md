@@ -21,15 +21,18 @@ sessions survive pod replacement.
 ## Olla Provider
 
 The image routes inference through `https://olla.ergoshear.dev/olla/openai/v1`
-using model `llama3` and the OpenAI-compatible chat-completions API. The `olla`
-API key is a placeholder, not a secret. Coding-agent tool use requires a
-model/backend that supports tool calls.
+using model `/models/gpt-oss-20b-MXFP4.gguf` and the OpenAI-compatible
+chat-completions API. The `olla` API key is a placeholder, not a secret.
+Coding-agent tool use requires a model/backend that supports tool calls.
 
 The `018-olla-config` startup hook runs after the upstream home initialization
 and before gateways start. It updates only `model.provider`, `model.base_url`,
 `model.api_key`, `model.default`, and `model.api_mode` in the persisted config,
 so existing PVCs also switch to Olla without losing dashboard or session data.
-These settings are reapplied on every container start. Override `OPENAI_BASE_URL`,
+It also installs and enables the Superpowers plugin on first startup, including
+for existing PVCs, and ensures it stays enabled on later starts. The initial
+install overrides Hermes' caution scan because this plugin source is explicitly
+trusted. These settings are reapplied on every container start. Override `OPENAI_BASE_URL`,
 `OPENAI_API_KEY`, or `OLLA_MODEL` in the deployment to change the defaults.
 Separate named profiles and per-session model overrides retain their own settings.
 
