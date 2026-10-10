@@ -21,9 +21,9 @@ sessions survive pod replacement.
 ## Olla Provider
 
 The image routes inference through `https://olla.ergoshear.dev/olla/openai/v1`
-using model `llama3` and the OpenAI-compatible chat-completions API. The `olla`
-API key is a placeholder, not a secret. Coding-agent tool use requires a
-model/backend that supports tool calls.
+using model `/models/gpt-oss-20b-MXFP4.gguf` and the OpenAI-compatible
+chat-completions API. The `olla` API key is a placeholder, not a secret.
+Coding-agent tool use requires a model/backend that supports tool calls.
 
 The `018-olla-config` startup hook runs after the upstream home initialization
 and before gateways start. It updates only `model.provider`, `model.base_url`,
