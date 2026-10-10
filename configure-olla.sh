@@ -7,3 +7,11 @@ s6-setuidgid hermes "$hermes_cli" config set model.base_url "$OPENAI_BASE_URL"
 s6-setuidgid hermes "$hermes_cli" config set model.api_key "$OPENAI_API_KEY"
 s6-setuidgid hermes "$hermes_cli" config set model.default "$OLLA_MODEL"
 s6-setuidgid hermes "$hermes_cli" config set model.api_mode chat_completions
+
+plugin_dir=/opt/data/plugins/superpowers
+install -d -o hermes -g hermes /opt/data/plugins
+if [ -d "$plugin_dir" ]; then
+	s6-setuidgid hermes "$hermes_cli" plugins enable superpowers
+else
+	s6-setuidgid hermes "$hermes_cli" plugins install obra/superpowers --enable --yes-deps --force
+fi
