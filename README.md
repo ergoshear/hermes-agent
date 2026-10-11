@@ -21,7 +21,7 @@ sessions survive pod replacement.
 ## Olla Provider
 
 The image routes inference through `https://olla.ergoshear.dev/olla/openai/v1`
-using model `/models/gpt-oss-20b-MXFP4.gguf` and the OpenAI-compatible
+using model `qwen3-coder-next` and the OpenAI-compatible
 chat-completions API. The `olla` API key is a placeholder, not a secret.
 Coding-agent tool use requires a model/backend that supports tool calls.
 
