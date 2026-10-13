@@ -2,10 +2,10 @@
 set -eu
 
 hermes_cli=/opt/hermes/.venv/bin/hermes
-s6-setuidgid hermes "$hermes_cli" config set model.provider custom:olla
-s6-setuidgid hermes "$hermes_cli" config set providers.olla.api "$OPENAI_BASE_URL"
-s6-setuidgid hermes "$hermes_cli" config set providers.olla.api_key "$OPENAI_API_KEY"
-s6-setuidgid hermes "$hermes_cli" config set providers.olla.transport chat_completions
+s6-setuidgid hermes "$hermes_cli" config set model.provider custom
+s6-setuidgid hermes "$hermes_cli" config set providers.custom.api "$OPENAI_BASE_URL"
+s6-setuidgid hermes "$hermes_cli" config set providers.custom.api_key "$OPENAI_API_KEY"
+s6-setuidgid hermes "$hermes_cli" config set providers.custom.transport chat_completions
 s6-setuidgid hermes "$hermes_cli" config set model.default "$OLLA_MODEL"
 
 plugin_dir=/opt/data/plugins/superpowers

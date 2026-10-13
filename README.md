@@ -35,8 +35,8 @@ Hermes defaults to `qwen3-coder-next`; coding-agent tool use requires a
 model/backend that supports tool calls.
 
 The `018-olla-config` startup hook runs after the upstream home initialization
-and before gateways start. It configures Olla as the named `olla` custom
-provider (`model.provider: custom:olla`) with its endpoint, API key, and
+and before gateways start. It configures Olla under the `custom` provider
+entry (`model.provider: custom`) with its endpoint, API key, and
 chat-completions transport, then selects the default model. This makes the
 provider explicit in Hermes' `providers:` configuration and updates existing
 PVCs without losing dashboard or session data.
